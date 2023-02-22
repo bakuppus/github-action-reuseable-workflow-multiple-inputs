@@ -1,0 +1,20 @@
+name: Call a reusable workflow and use its inputs
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  call-workflow-A:
+    uses: .github/workflows/blue-workflow-caller.yaml
+    with:
+      username: Blue
+    secrets:
+      token: ${{ secrets.CICD_GIT_TOKEN }}
+
+  call-workflow-B:
+    uses: .github/workflows/green-workflow-caller.yaml
+    with:
+      username: Red
+    secrets:
+      token: ${{ secrets.CICD_GIT_TOKEN }}
