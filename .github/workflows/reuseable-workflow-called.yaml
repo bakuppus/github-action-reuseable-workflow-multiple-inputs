@@ -14,7 +14,7 @@ on:
 
 jobs:
   call-workflow-A:
-    github.event.inputs.username == 'Blue'
+    if: github.event.inputs.username == 'Blue'
     uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/blue-workflow-caller.yaml@dev
     with:
       username:  ${{ inputs.username }}
@@ -22,7 +22,7 @@ jobs:
       token: ${{ secrets.CICD_GIT_TOKEN }}
 
   call-workflow-B:
-    github.event.inputs.username == 'Green'
+    if: github.event.inputs.username == 'Green'
     uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/green-workflow-caller.yaml@dev
     with:
       username: ${{ inputs.username }}
