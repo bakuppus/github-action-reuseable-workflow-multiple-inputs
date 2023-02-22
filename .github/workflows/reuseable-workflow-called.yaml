@@ -6,14 +6,14 @@ on:
 
 jobs:
   call-workflow-A:
-    uses: bakuppus/github-action-reusable-workflow/.github/workflows/blue-workflow-caller.yaml@dev
+    uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/blue-workflow-caller.yaml@dev
     with:
       username: Blue
     secrets:
       token: ${{ secrets.CICD_GIT_TOKEN }}
 
   call-workflow-B:
-    uses: bakuppus/github-action-reusable-workflow/.github/workflows/green-workflow-caller.yaml@dev
+    uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/green-workflow-caller.yaml@dev
     with:
       username: Green
     secrets:
