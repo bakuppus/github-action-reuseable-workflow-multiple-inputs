@@ -3,18 +3,26 @@ name: called
 on:
 
   workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        type: choice
+        options:
+        - Blue
+        - Green
+
 
 jobs:
   call-workflow-A:
     uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/blue-workflow-caller.yaml@dev
     with:
-      username: Blue
+      username:  ${{ inputs.username }}
     secrets:
       token: ${{ secrets.CICD_GIT_TOKEN }}
 
   call-workflow-B:
     uses: bakuppus/github-action-reuseable-workflow-multiple-inputs/.github/workflows/green-workflow-caller.yaml@dev
     with:
-      username: Green
+      username: ${{ inputs.username }}
     secrets:
       token: ${{ secrets.CICD_GIT_TOKEN }}
