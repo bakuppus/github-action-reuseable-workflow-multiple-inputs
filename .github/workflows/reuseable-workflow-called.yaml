@@ -1,4 +1,4 @@
-name: Call a reusable workflow and use its inputs
+name: called
 
 on:
 
@@ -6,15 +6,15 @@ on:
 
 jobs:
   call-workflow-A:
-    uses: ./.github/workflows/blue-workflow-caller.yaml
+    uses: bakuppus/github-action-reusable-workflow/.github/workflows/blue-workflow-caller.yaml@dev
     with:
       username: Blue
     secrets:
       token: ${{ secrets.CICD_GIT_TOKEN }}
 
   call-workflow-B:
-    uses: ./.github/workflows/green-workflow-caller.yaml
+    uses: bakuppus/github-action-reusable-workflow/.github/workflows/green-workflow-caller.yaml@dev
     with:
-      username: Red
+      username: Green
     secrets:
       token: ${{ secrets.CICD_GIT_TOKEN }}
